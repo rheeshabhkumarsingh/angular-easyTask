@@ -5,12 +5,6 @@ import { User } from './user/user';
 import { DUMMY_USERS } from './dummy-users';
 import { Tasks } from './tasks/tasks';
 
-export interface UserDetail {
-  id: string,
-  name:string,
-  avatar: string
-}
-
 @Component({
   selector: 'app-root',
   imports: [Header, User, Tasks],
