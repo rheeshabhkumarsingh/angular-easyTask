@@ -42,4 +42,8 @@ export class Tasks {
   get selectedUserTask() {
     return this.dummyTasks.filter((task) => task.userId === this.userDetail.id)
   }
+
+  completeTask(id: String) {
+    this.dummyTasks = this.dummyTasks.filter((task) => task.id !== id)
+  }
 }

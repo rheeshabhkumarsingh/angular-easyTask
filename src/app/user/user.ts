@@ -9,6 +9,7 @@ import { UserDetail } from './user.model';
 })
 export class User {
   @Input() user!: UserDetail;
+  @Input() selected!: boolean;
   @Output() selectedUser = new EventEmitter();
 
   

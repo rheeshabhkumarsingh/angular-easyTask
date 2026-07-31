@@ -13,11 +13,11 @@ import { Tasks } from './tasks/tasks';
 })
 export class App {
   users = DUMMY_USERS;
-  userDetail = DUMMY_USERS[0];
+  selectedUserDetail = DUMMY_USERS[0];
   protected readonly title = signal('first-angular-project');
 
   onUserSelect(event: string) {
     console.log(event)
-    this.userDetail = DUMMY_USERS.find(user => user.id === event) ?? DUMMY_USERS[0];
+    this.selectedUserDetail = DUMMY_USERS.find(user => user.id === event) ?? DUMMY_USERS[0];
   }
 }
