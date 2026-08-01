@@ -12,6 +12,7 @@ import { UserDetail } from '../user/user.model';
 export class Tasks {
   @Input() userDetail!: UserDetail;
 
+  isAddingTask = false;
 
   dummyTasks = [
   {
@@ -45,5 +46,13 @@ export class Tasks {
 
   completeTask(id: String) {
     this.dummyTasks = this.dummyTasks.filter((task) => task.id !== id)
+  }
+
+  onStartAddTask() {
+    this.isAddingTask = true;
+  }
+
+  onCancelAddTask() {
+    this.isAddingTask = false;
   }
 }
