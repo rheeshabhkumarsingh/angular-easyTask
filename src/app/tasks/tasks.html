@@ -1,3 +1,6 @@
+@if (isAddingTask) {
+    <app-new-task [userId]="userDetail.id"></app-new-task>
+}
 <section id="tasks">
     <header>
         <h2>{{userDetail.name}}'s Tasks</h2>
