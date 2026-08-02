@@ -3,6 +3,7 @@ import { Task } from '../task/task';
 import { UserDetail } from '../user/user.model';
 import { NewTask } from '../new-task/new-task';
 import { NewTaskData } from '../task/task.model';
+import { TaskService } from './tasks.service';
 
 @Component({
   selector: 'app-tasks',
@@ -16,38 +17,16 @@ export class Tasks {
 
   isAddingTask = false;
 
-  dummyTasks = [
-  {
-    id: 't1',
-    userId: 'u1',
-    title: 'Master Angular',
-    summary:
-      'Learn all the basic and advanced features of Angular & how to apply them.',
-    dueDate: '2025-12-31',
-  },
-  {
-    id: 't2',
-    userId: 'u3',
-    title: 'Build first prototype',
-    summary: 'Build a first prototype of the online shop website',
-    dueDate: '2024-05-31',
-  },
-  {
-    id: 't3',
-    userId: 'u3',
-    title: 'Prepare issue template',
-    summary:
-      'Prepare and describe an issue template which will help with project management',
-    dueDate: '2024-06-15',
-  },
-  ]
+  constructor(
+    private taskService: TaskService,
+  ){}
 
   get selectedUserTask() {
-    return this.dummyTasks.filter((task) => task.userId === this.userDetail.id)
+    return this.taskService.getUserTask(this.userDetail.id)
   }
 
-  completeTask(id: String) {
-    this.dummyTasks = this.dummyTasks.filter((task) => task.id !== id)
+  completeTask(id: string) {
+    this.taskService.removeTask(id)
   }
 
   onStartAddTask() {
@@ -59,12 +38,6 @@ export class Tasks {
   }
 
   onTaskAdd(taskData: NewTaskData) {
-    this.dummyTasks.push({
-      id: `${new Date().getTime().toString()}+${this.userDetail.id}`,
-      userId: this.userDetail.id,
-      title: taskData.title,
-      summary: taskData.summary,
-      dueDate: taskData.date
-    })
+    this.taskService.addTask(taskData, this.userDetail.id)
   }
 }

@@ -10,7 +10,7 @@ import { DatePipe } from '@angular/common';
 })
 export class Task {
   @Input() task!: TaskData;
-  @Output() complete = new EventEmitter<String>();
+  @Output() complete = new EventEmitter<string>();
 
   onCompleteTask() {
     this.complete.emit(this.task.id);
